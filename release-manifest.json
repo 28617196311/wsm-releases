@@ -1,18 +1,21 @@
 {
-  "version": "2.2.1",
-  "releasedAt": "2026-11-23T03:37:48.005Z",
+  "version": "2.2.2",
+  "releasedAt": "2026-11-23T05:15:18.247Z",
   "changelog": [
-    "修复上传令牌校验漏洞：2.2.0 只检查仓库接口的 permissions.push，而该字段反映的是登录用户权限，不是细粒度令牌权限；这导致把安装包内置的只读令牌粘贴到上传框也能保存，真正上传时才报「GitHub 令牌没有访问该仓库的权限」",
-    "现在保存上传令牌时会实际创建一个测试 blob，只有持有 wsm-data 的 Contents: Read and write 权限才会通过；只读令牌会被当场拒绝，并明确提示不要使用安装包内置的只读令牌",
-    "版本升至 2.2.1；补充只读令牌/可写令牌校验单测，typecheck、完整单测、E2E 与打包态 smoke 全部通过"
+    "修复只读令牌被误判为可上传：启动时对本机已保存的上传令牌做真实写入探测，只读或失效令牌会降级为「只读」，选仓页新建、改名、删除、云端快照恢复和回收站恢复/彻底删除全部禁用，并分别提示普通员工、只读令牌和令牌校验失败原因",
+    "修复云端写入可能用旧内容覆盖别人的窗口：先把分支 ref 和基线提交固定下来，再按该提交读取目标文件 SHA，最后 force:false 推进 ref；文件在读取过程中被其他设备改写会直接判冲突，不再覆盖",
+    "修复 403 一律被判成只读的问题：上传权限探测区分 GitHub 限流与真正的只读令牌，限流时提示稍后重试，不再误导用户重新绑定令牌",
+    "更新清单增加 GitHub API 与 github.com raw 两个备用源，raw.githubusercontent.com 被拦截时仍能检查更新；发布脚本同版本同名资产改为同时校验大小和 SHA-256，避免复用错误安装包",
+    "修复内容哈希对 undefined 的语义偏差，并让云端快照只在真实写入后生成；内容未变化的重启同步不再额外产生无用快照",
+    "版本升至 2.2.2；补充只读权限闸门、令牌自检、写入顺序、403 限流与 undefined 哈希单测，typecheck、完整单测、E2E 与打包态 smoke 全部通过"
   ],
   "installer": {
-    "fileName": "仓库货架管理 Setup 2.2.1.exe",
-    "size": 121803088,
-    "sha256": "04e2b691c25cc2e459e0cc24ea0fcc4e98a680c1fc087f53d2f956c758cfd770",
+    "fileName": "仓库货架管理 Setup 2.2.2.exe",
+    "size": 121804875,
+    "sha256": "8fdf89a61ebaf5850959c7b6c9a32f199528f2fd9121c301a767b4c0cdf63eb1",
     "mode": "github",
-    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.2.1/warehouse-shelf-manager-setup-2.2.1.exe"
+    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.2.2/warehouse-shelf-manager-setup-2.2.2.exe"
   },
   "signatureAlgorithm": "ed25519",
-  "signature": "vLU9ITJYCI44MS3i5qFd98hctNNJXf+IrrZjUb9lI1kB66uK7CDI7nmRCdTWwp6gi2aI7jeqKXtcywYixbNFAA=="
+  "signature": "SVJI6aAzBuyuco6FulLSDINUN/AineMJJMd3zEZf7eMuxGzPKSQH4udgpN9neUa+SPr3Hogd/w6PzyiTyDRYDg=="
 }
