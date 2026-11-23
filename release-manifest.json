@@ -1,22 +1,18 @@
 {
-  "version": "2.2.0",
-  "releasedAt": "2026-11-23T01:52:34.585Z",
+  "version": "2.2.1",
+  "releasedAt": "2026-11-23T03:37:48.005Z",
   "changelog": [
-    "云端后端整体从 Supabase 迁到 GitHub：业务数据写入私有仓库 28617196311/wsm-data，更新清单与安装包走公开仓库 28617196311/wsm-releases；客户端不再依赖 Supabase",
-    "取消云端账号登录：管理员电脑绑定 GitHub 上传令牌（safeStorage 加密保存，仅本机可用），其他电脑使用安装包内置只读令牌；只有管理员电脑能上传，其他电脑只读拉取，删除云端编辑锁与接管流程",
-    "移除 Supabase Realtime：改为每 60 秒读取 GitHub 分支树，只有 blob SHA 变化的记录才下载；窗口重新可见时补一次同步，降低请求量与等待感",
-    "GitHub 写入改用 Git Data API 建 blob/tree/commit 并以 force:false 推进 main，避免 Contents API 旧 SHA 被直接覆盖；同一记录并发写会判冲突并回读最新版本",
-    "更新链路改为只读 wsm-releases 根目录签名 release-manifest.json，安装包只允许 GitHub Releases 直链；2.2.0 自身不再包含任何 Supabase 更新回退代码",
-    "业务数据迁移：Supabase app_data 的 48 条记录已写入 wsm-data 并逐条回读对账，2 条临时编辑锁记录不迁移；原发布清单已迁移到 wsm-releases 并验签通过",
-    "本次回归 typecheck 通过，GitHub 适配器真实仓库读写/CAS 验证通过，单元测试与完整 E2E 全部通过，打包态 smoke 验证 electronAPI 白名单与渲染进程沙箱"
+    "修复上传令牌校验漏洞：2.2.0 只检查仓库接口的 permissions.push，而该字段反映的是登录用户权限，不是细粒度令牌权限；这导致把安装包内置的只读令牌粘贴到上传框也能保存，真正上传时才报「GitHub 令牌没有访问该仓库的权限」",
+    "现在保存上传令牌时会实际创建一个测试 blob，只有持有 wsm-data 的 Contents: Read and write 权限才会通过；只读令牌会被当场拒绝，并明确提示不要使用安装包内置的只读令牌",
+    "版本升至 2.2.1；补充只读令牌/可写令牌校验单测，typecheck、完整单测、E2E 与打包态 smoke 全部通过"
   ],
   "installer": {
-    "fileName": "仓库货架管理 Setup 2.2.0.exe",
-    "size": 121803045,
-    "sha256": "3187cc3a86c599533b18f94864fd996704994eddd99902300d95b6e171586898",
+    "fileName": "仓库货架管理 Setup 2.2.1.exe",
+    "size": 121803088,
+    "sha256": "04e2b691c25cc2e459e0cc24ea0fcc4e98a680c1fc087f53d2f956c758cfd770",
     "mode": "github",
-    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.2.0/warehouse-shelf-manager-setup-2.2.0.exe"
+    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.2.1/warehouse-shelf-manager-setup-2.2.1.exe"
   },
   "signatureAlgorithm": "ed25519",
-  "signature": "ax0aWw6wQ0HDl0H2KgsBR4jXgAD98XETSvPNou7UIKc6lj8ubUI18MTEiPQk74Ris0RWBAVQ6vwCrnyQErUnCg=="
+  "signature": "vLU9ITJYCI44MS3i5qFd98hctNNJXf+IrrZjUb9lI1kB66uK7CDI7nmRCdTWwp6gi2aI7jeqKXtcywYixbNFAA=="
 }
