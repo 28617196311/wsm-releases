@@ -1,21 +1,24 @@
 {
-  "version": "2.2.2",
-  "releasedAt": "2026-11-23T05:15:18.247Z",
+  "version": "2.3.0",
+  "releasedAt": "2026-11-23T08:49:27.964Z",
   "changelog": [
-    "修复只读令牌被误判为可上传：启动时对本机已保存的上传令牌做真实写入探测，只读或失效令牌会降级为「只读」，选仓页新建、改名、删除、云端快照恢复和回收站恢复/彻底删除全部禁用，并分别提示普通员工、只读令牌和令牌校验失败原因",
-    "修复云端写入可能用旧内容覆盖别人的窗口：先把分支 ref 和基线提交固定下来，再按该提交读取目标文件 SHA，最后 force:false 推进 ref；文件在读取过程中被其他设备改写会直接判冲突，不再覆盖",
-    "修复 403 一律被判成只读的问题：上传权限探测区分 GitHub 限流与真正的只读令牌，限流时提示稍后重试，不再误导用户重新绑定令牌",
-    "更新清单增加 GitHub API 与 github.com raw 两个备用源，raw.githubusercontent.com 被拦截时仍能检查更新；发布脚本同版本同名资产改为同时校验大小和 SHA-256，避免复用错误安装包",
-    "修复内容哈希对 undefined 的语义偏差，并让云端快照只在真实写入后生成；内容未变化的重启同步不再额外产生无用快照",
-    "版本升至 2.2.2；补充只读权限闸门、令牌自检、写入顺序、403 限流与 undefined 哈希单测，typecheck、完整单测、E2E 与打包态 smoke 全部通过"
+    "盘点快速录入升级：支持物料名称/编码精确优先搜索、扫码录入、按总数量反推包装与散件、跳过/清零/按账面确认/撤销，以及全部、未核对、已核对、有差异、盘盈、盘亏、已跳过等状态筛选",
+    "快速录入面板显示实盘数量与差异，支持自然排序、结果超过 200 条时优先渲染前 200 条、选中项自动滚入视野；F2 聚焦搜索，Ctrl+Enter 保存并继续",
+    "盘点草稿、已核对/已跳过、备注、计量单位快照和盘盈新增自动保存；应用重启或关窗后恢复为暂停状态，可选择继续、保存并退出或放弃；锁丢失时保留草稿并暂停",
+    "新增盘点范围：全部物料、指定货架、分类、仓位号前缀、物料编码前缀；范围外物品不显示盘点输入和差异高亮，开始盘点自动展开相关货架行与筐",
+    "新增盘盈直接建档：可在快速录入面板内新增物料并纳入本次盘点，完成时写回货架，记录中保留已核对快照；放弃盘点时移除本次新增并落盘防止云端复活",
+    "完成盘点前增加差异复核：集中展示已核对/总数/跳过、盘盈盘亏、范围与整次备注，可筛选有变化/盘盈/盘亏；记录补充操作人、设备、起止时间、跳过/未核对、已核对快照和同步状态，失败可重试",
+    "盘点记录支持本机 pending / 云端 synced 状态与重试，导出 Excel 增加盘点汇总、差异变化明细、已核对明细三个 Sheet；暂停与继续盘点状态完整保留",
+    "修复开始盘点先清旧草稿再校验范围的问题；修复云端推送残留 pending 状态、放弃盘盈新增物品可能被自动同步推回云端等数据安全问题",
+    "版本升至 2.3.0；typecheck、31 项 Node 单测、36 项完整 E2E 与打包态 smoke 全部通过"
   ],
   "installer": {
-    "fileName": "仓库货架管理 Setup 2.2.2.exe",
-    "size": 121804875,
-    "sha256": "8fdf89a61ebaf5850959c7b6c9a32f199528f2fd9121c301a767b4c0cdf63eb1",
+    "fileName": "仓库货架管理 Setup 2.3.0.exe",
+    "size": 121815929,
+    "sha256": "1c13e2acae96c2ff7318fc64179cf53fabbda4b2d2fe986e0b77e27e2e8611bd",
     "mode": "github",
-    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.2.2/warehouse-shelf-manager-setup-2.2.2.exe"
+    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.3.0/warehouse-shelf-manager-setup-2.3.0.exe"
   },
   "signatureAlgorithm": "ed25519",
-  "signature": "SVJI6aAzBuyuco6FulLSDINUN/AineMJJMd3zEZf7eMuxGzPKSQH4udgpN9neUa+SPr3Hogd/w6PzyiTyDRYDg=="
+  "signature": "pJEBegIPlQhTCb5MzxaPwI0wZrKQ+oZMmFfCxea8eHc/SajwKE6QzKYkbw6cRYxhZZUQt/oTp9lcg3QMYNZoDQ=="
 }
