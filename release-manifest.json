@@ -1,24 +1,21 @@
 {
-  "version": "2.3.0",
-  "releasedAt": "2026-11-23T08:49:27.964Z",
+  "version": "2.3.1",
+  "releasedAt": "2026-11-23T23:24:48.321Z",
   "changelog": [
-    "盘点快速录入升级：支持物料名称/编码精确优先搜索、扫码录入、按总数量反推包装与散件、跳过/清零/按账面确认/撤销，以及全部、未核对、已核对、有差异、盘盈、盘亏、已跳过等状态筛选",
-    "快速录入面板显示实盘数量与差异，支持自然排序、结果超过 200 条时优先渲染前 200 条、选中项自动滚入视野；F2 聚焦搜索，Ctrl+Enter 保存并继续",
-    "盘点草稿、已核对/已跳过、备注、计量单位快照和盘盈新增自动保存；应用重启或关窗后恢复为暂停状态，可选择继续、保存并退出或放弃；锁丢失时保留草稿并暂停",
-    "新增盘点范围：全部物料、指定货架、分类、仓位号前缀、物料编码前缀；范围外物品不显示盘点输入和差异高亮，开始盘点自动展开相关货架行与筐",
-    "新增盘盈直接建档：可在快速录入面板内新增物料并纳入本次盘点，完成时写回货架，记录中保留已核对快照；放弃盘点时移除本次新增并落盘防止云端复活",
-    "完成盘点前增加差异复核：集中展示已核对/总数/跳过、盘盈盘亏、范围与整次备注，可筛选有变化/盘盈/盘亏；记录补充操作人、设备、起止时间、跳过/未核对、已核对快照和同步状态，失败可重试",
-    "盘点记录支持本机 pending / 云端 synced 状态与重试，导出 Excel 增加盘点汇总、差异变化明细、已核对明细三个 Sheet；暂停与继续盘点状态完整保留",
-    "修复开始盘点先清旧草稿再校验范围的问题；修复云端推送残留 pending 状态、放弃盘盈新增物品可能被自动同步推回云端等数据安全问题",
-    "版本升至 2.3.0；typecheck、31 项 Node 单测、36 项完整 E2E 与打包态 smoke 全部通过"
+    "修复云写入 IPC 冲突语义：CAS 冲突现在明确返回 success:false，渲染层仍按可重试冲突处理，避免未来直接调用 preload API 时误判为写入成功",
+    "强化打包安全 smoke：不再用 Playwright/CDP 的 eval 证明 CSP，改为页面内 inline script + securitypolicyviolation 事件验证，避免假阳性",
+    "盘点草稿 localStorage 备份改为 250ms 尾写合并，并在 beforeunload/pagehide/visibilitychange 强制 flush；超过 1MB 字符（UTF-16 约 2MB）时跳过同步备份并清掉旧备份，降低大仓卡顿、配额和误恢复旧草稿风险",
+    "补充 ESLint 10 安全 lint 门禁（eval、innerHTML、dangerouslySetInnerHTML、Hooks 规则），修复 cloud-record 测试的 Node 22 扩展名/参数属性解析问题，并将 cloud 写入契约测试纳入单测",
+    "构建链强制 minimatch 11.0.9 覆盖，清除 electron-builder 依赖的 dev ReDoS 告警；已用 electron-builder 26.18 --dir 实际打出 2.3.1 解包目录并通过打包态 CSP smoke；增加发布签名门禁，WSM_REQUIRE_SIGNING=1 时缺少 Authenticode 证书会阻止打包",
+    "版本升至 2.3.1；本次发布安装包，包含本轮中低风险修复"
   ],
   "installer": {
-    "fileName": "仓库货架管理 Setup 2.3.0.exe",
-    "size": 121815929,
-    "sha256": "1c13e2acae96c2ff7318fc64179cf53fabbda4b2d2fe986e0b77e27e2e8611bd",
+    "fileName": "仓库货架管理 Setup 2.3.1.exe",
+    "size": 121817073,
+    "sha256": "1d4b276ef58a19d3f071edd7f79190668e0d2c4f5ca5a791ffa5ab12232797d2",
     "mode": "github",
-    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.3.0/warehouse-shelf-manager-setup-2.3.0.exe"
+    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.3.1/warehouse-shelf-manager-setup-2.3.1.exe"
   },
   "signatureAlgorithm": "ed25519",
-  "signature": "pJEBegIPlQhTCb5MzxaPwI0wZrKQ+oZMmFfCxea8eHc/SajwKE6QzKYkbw6cRYxhZZUQt/oTp9lcg3QMYNZoDQ=="
+  "signature": "+6w2eUzakC7/zsh5cFVGPG7wYCfoxaquuhpdEgQZ9bp/N5dEdQTMI4PjdU72czgB3FwPCe81TGElVQocdeq1Ag=="
 }
