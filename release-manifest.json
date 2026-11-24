@@ -1,21 +1,20 @@
 {
-  "version": "2.3.1",
-  "releasedAt": "2026-11-23T23:24:48.321Z",
+  "version": "2.4.0",
+  "releasedAt": "2026-11-24T01:14:04.564Z",
   "changelog": [
-    "修复云写入 IPC 冲突语义：CAS 冲突现在明确返回 success:false，渲染层仍按可重试冲突处理，避免未来直接调用 preload API 时误判为写入成功",
-    "强化打包安全 smoke：不再用 Playwright/CDP 的 eval 证明 CSP，改为页面内 inline script + securitypolicyviolation 事件验证，避免假阳性",
-    "盘点草稿 localStorage 备份改为 250ms 尾写合并，并在 beforeunload/pagehide/visibilitychange 强制 flush；超过 1MB 字符（UTF-16 约 2MB）时跳过同步备份并清掉旧备份，降低大仓卡顿、配额和误恢复旧草稿风险",
-    "补充 ESLint 10 安全 lint 门禁（eval、innerHTML、dangerouslySetInnerHTML、Hooks 规则），修复 cloud-record 测试的 Node 22 扩展名/参数属性解析问题，并将 cloud 写入契约测试纳入单测",
-    "构建链强制 minimatch 11.0.9 覆盖，清除 electron-builder 依赖的 dev ReDoS 告警；已用 electron-builder 26.18 --dir 实际打出 2.3.1 解包目录并通过打包态 CSP smoke；增加发布签名门禁，WSM_REQUIRE_SIGNING=1 时缺少 Authenticode 证书会阻止打包",
-    "版本升至 2.3.1；本次发布安装包，包含本轮中低风险修复"
+    "重复物料现在按位置逐级标红：货架头显示「有重复」，有重复的行头、筐头和具体物品卡片分别红底红框，并显示「重复」标记",
+    "重复标记精确到行和筐：即使货架、行或筐处于折叠状态，行头/筐头的红色提示仍然可见；展开后可直接看到具体重复物品，不再只标记整个货架",
+    "重复判定沿用现有口径：物料名称、物料编码、规格型号三项完全相同才算重复；名称、编码或规格有一项不同都保留为不同物料",
+    "新增重复位置计算与 3 条单元测试，完整 E2E 增至 37 项并覆盖重复物料标红到行和筐的场景；typecheck、全量 lint、75 项 Node 测试与 37 项 E2E 全部通过",
+    "版本升至 2.4.0；本次为重复物料定位的界面功能升级，发布安装包"
   ],
   "installer": {
-    "fileName": "仓库货架管理 Setup 2.3.1.exe",
-    "size": 121817073,
-    "sha256": "1d4b276ef58a19d3f071edd7f79190668e0d2c4f5ca5a791ffa5ab12232797d2",
+    "fileName": "仓库货架管理 Setup 2.4.0.exe",
+    "size": 121817215,
+    "sha256": "3acd5741cc47b9e6e5b6d7b41cc357127a17dde9857fee7416da79135eb745d5",
     "mode": "github",
-    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.3.1/warehouse-shelf-manager-setup-2.3.1.exe"
+    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.4.0/warehouse-shelf-manager-setup-2.4.0.exe"
   },
   "signatureAlgorithm": "ed25519",
-  "signature": "+6w2eUzakC7/zsh5cFVGPG7wYCfoxaquuhpdEgQZ9bp/N5dEdQTMI4PjdU72czgB3FwPCe81TGElVQocdeq1Ag=="
+  "signature": "UKa1UrplDsJTPam+s7csnaWW10pdYl4t/h0REkZ03VvGbgqmr4WCiAZzDmYCw107SrVVWiqD+ZizhMjMgyTHBg=="
 }
