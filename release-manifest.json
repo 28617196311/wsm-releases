@@ -1,20 +1,18 @@
 {
-  "version": "2.4.0",
-  "releasedAt": "2026-11-24T01:14:04.564Z",
+  "version": "2.4.1",
+  "releasedAt": "2026-11-24T04:36:30.011Z",
   "changelog": [
-    "重复物料现在按位置逐级标红：货架头显示「有重复」，有重复的行头、筐头和具体物品卡片分别红底红框，并显示「重复」标记",
-    "重复标记精确到行和筐：即使货架、行或筐处于折叠状态，行头/筐头的红色提示仍然可见；展开后可直接看到具体重复物品，不再只标记整个货架",
-    "重复判定沿用现有口径：物料名称、物料编码、规格型号三项完全相同才算重复；名称、编码或规格有一项不同都保留为不同物料",
-    "新增重复位置计算与 3 条单元测试，完整 E2E 增至 37 项并覆盖重复物料标红到行和筐的场景；typecheck、全量 lint、75 项 Node 测试与 37 项 E2E 全部通过",
-    "版本升至 2.4.0；本次为重复物料定位的界面功能升级，发布安装包"
+    "修复「同步与关于」弹窗过长导致右上角关闭按钮被顶出界面的问题：弹窗高度限制在视口内，标题和关闭按钮固定，只有内容区滚动",
+    "云端快照默认按每个仓库只展示最近 3 份，旧的 7 份仍保留，可点「展开全部」查看；快照列表自身限高并在内部滚动，页面不再被撑长",
+    "版本升至 2.4.1；本次为界面补丁，typecheck、lint、75 项 Node 单测、37 项完整 E2E 与打包态 smoke 全部通过"
   ],
   "installer": {
-    "fileName": "仓库货架管理 Setup 2.4.0.exe",
-    "size": 121817215,
-    "sha256": "3acd5741cc47b9e6e5b6d7b41cc357127a17dde9857fee7416da79135eb745d5",
+    "fileName": "仓库货架管理 Setup 2.4.1.exe",
+    "size": 121817288,
+    "sha256": "b7c6e27b8e23e8ae9c214a593104a52cc0c82957457ac9651994f77abfd29b90",
     "mode": "github",
-    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.4.0/warehouse-shelf-manager-setup-2.4.0.exe"
+    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.4.1/warehouse-shelf-manager-setup-2.4.1.exe"
   },
   "signatureAlgorithm": "ed25519",
-  "signature": "UKa1UrplDsJTPam+s7csnaWW10pdYl4t/h0REkZ03VvGbgqmr4WCiAZzDmYCw107SrVVWiqD+ZizhMjMgyTHBg=="
+  "signature": "y7jjVzHXXCUB532ARL3UGMOG+LdfpD08MqkQivNv7NPaFfbxHfkRDO+2Akk0MMd+AAbW0oIDG2xj0/gzH+ReBA=="
 }
