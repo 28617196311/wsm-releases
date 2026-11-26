@@ -1,19 +1,24 @@
 {
-  "version": "2.15.1",
-  "releasedAt": "2026-11-26T09:16:26.041Z",
+  "version": "2.15.2",
+  "releasedAt": "2026-11-26T09:32:41.602Z",
   "changelog": [
-    "修复启动更新门禁的窗口生命周期：确认已是最新版本后先创建主窗口再关闭更新页，避免主界面尚未创建时触发窗口全部关闭而直接退出应用",
-    "更新安装包下载新增 api.github.com 资产接口备用通道：github.com 直链被网络拦截时自动改用 GitHub API 资产地址，仍逐跳校验官方域名并核对大小与 SHA-256",
-    "版本升至 2.15.1；单元测试 83/83、typecheck、lint 通过，重新构建并发布更新清单与安装包"
+    "修复更新页内联脚本被 CSP 拦截导致界面一直停在“正在检查更新”、失败后按钮不可用的问题；脚本改为独立 update-gate.js，仍由严格 script-src self 限制",
+    "安装包下载新增固定 GitHub 加速镜像兜底：官方直链失败后依次尝试 ghproxy.net、gh-proxy.com、ghfast.top，镜像只提供下载通道，清单验签与 SHA-256 校验不变",
+    "版本升至 2.15.2；单元测试 84/84、typecheck、lint 通过，重新构建并发布更新清单与安装包"
   ],
   "installer": {
-    "fileName": "仓库货架管理 Setup 2.15.1.exe",
-    "size": 121895611,
-    "sha256": "a66265490146456a880a2b7e245ec9d2ed67f2beac9c9b737513dd28077fef83",
+    "fileName": "仓库货架管理 Setup 2.15.2.exe",
+    "size": 121895878,
+    "sha256": "ae7e8f4d96337730f014ec63c7b70725b0b79ea1d84a16236b97a69e8cbac471",
     "mode": "github",
-    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.15.1/warehouse-shelf-manager-setup-2.15.1.exe",
-    "apiUrl": "https://api.github.com/repos/28617196311/wsm-releases/releases/assets/795109787"
+    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.15.2/warehouse-shelf-manager-setup-2.15.2.exe",
+    "apiUrl": "https://api.github.com/repos/28617196311/wsm-releases/releases/assets/795167436",
+    "mirrors": [
+      "https://ghproxy.net/https://github.com/28617196311/wsm-releases/releases/download/v2.15.2/warehouse-shelf-manager-setup-2.15.2.exe",
+      "https://gh-proxy.com/https://github.com/28617196311/wsm-releases/releases/download/v2.15.2/warehouse-shelf-manager-setup-2.15.2.exe",
+      "https://ghfast.top/https://github.com/28617196311/wsm-releases/releases/download/v2.15.2/warehouse-shelf-manager-setup-2.15.2.exe"
+    ]
   },
   "signatureAlgorithm": "ed25519",
-  "signature": "gRXBjqsiOucTf+ZuFCJj4X5Ae97f7T2fW6j8jzmU/PB550IS78ZSuC1BG/F8d4diObVe6Jr6H7NEhuea19/AAQ=="
+  "signature": "SWSn632npM5xHqKFu/5qJLgGEVf9hKRzSgK4lU0IQc3pvDD/OpxPG3mTpVHP5qFxEMrHQ7kd8omdmgxQbXK0Cg=="
 }
