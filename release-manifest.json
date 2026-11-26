@@ -1,24 +1,27 @@
 {
-  "version": "2.15.3",
-  "releasedAt": "2026-11-26T09:48:19.830Z",
+  "version": "2.16.0",
+  "releasedAt": "2026-11-26T23:48:42.409Z",
   "changelog": [
-    "调整 GitHub 加速镜像顺序为 gh-proxy.com、ghfast.top、ghproxy.net，并把每个镜像的下载超时放宽到 15 分钟，避免大安装包在较慢网络被过早中断",
-    "镜像只作为下载通道：更新清单仍用 Ed25519 验签，安装包仍强制核对 size 与 SHA-256，任何一个镜像返回错误内容都会中止更新",
-    "版本升至 2.15.3；单元测试 84/84、typecheck、lint 通过，重新构建并发布更新清单与安装包"
+    "新增记住上次使用身份：第一次选择普通用户或领料员后，下次启动直接进入对应界面，不再显示身份选择页",
+    "仓库管理员、系统管理员同样记住上次入口：启动后自动打开各自的登录框，但仍必须输入账号或独立口令，避免把记住身份变成绕过认证",
+    "所有角色界面保留「切换身份」入口；点击后返回身份选择并清除上次记忆，重新选择后更新为新的上次身份",
+    "上次身份是仓库管理员但本机已没有可用账号时，自动回退身份选择页并提示重新选择，不会停在无效登录状态",
+    "身份记忆只保存角色路由，不保存口令、登录会话或仓库管理员账号，也不进入云端快照与同步；仓库管理员和系统管理员的口令边界不变",
+    "版本升至 2.16.0；已完成 typecheck、lint、渲染构建和 Electron 安装包构建"
   ],
   "installer": {
-    "fileName": "仓库货架管理 Setup 2.15.3.exe",
-    "size": 121896588,
-    "sha256": "03e8cf39afd89a8dee386ba707c38ee6ddb02ec201e8595535a932a8e3c676cc",
+    "fileName": "仓库货架管理 Setup 2.16.0.exe",
+    "size": 121896883,
+    "sha256": "8c59cb5426d2a60e2519e0106d1a766c7f4c32a02dd8351bcc6f6fcf525cfd1f",
     "mode": "github",
-    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.15.3/warehouse-shelf-manager-setup-2.15.3.exe",
-    "apiUrl": "https://api.github.com/repos/28617196311/wsm-releases/releases/assets/795223536",
+    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.16.0/warehouse-shelf-manager-setup-2.16.0.exe",
+    "apiUrl": "https://api.github.com/repos/28617196311/wsm-releases/releases/assets/798178917",
     "mirrors": [
-      "https://gh-proxy.com/https://github.com/28617196311/wsm-releases/releases/download/v2.15.3/warehouse-shelf-manager-setup-2.15.3.exe",
-      "https://ghfast.top/https://github.com/28617196311/wsm-releases/releases/download/v2.15.3/warehouse-shelf-manager-setup-2.15.3.exe",
-      "https://ghproxy.net/https://github.com/28617196311/wsm-releases/releases/download/v2.15.3/warehouse-shelf-manager-setup-2.15.3.exe"
+      "https://gh-proxy.com/https://github.com/28617196311/wsm-releases/releases/download/v2.16.0/warehouse-shelf-manager-setup-2.16.0.exe",
+      "https://ghfast.top/https://github.com/28617196311/wsm-releases/releases/download/v2.16.0/warehouse-shelf-manager-setup-2.16.0.exe",
+      "https://ghproxy.net/https://github.com/28617196311/wsm-releases/releases/download/v2.16.0/warehouse-shelf-manager-setup-2.16.0.exe"
     ]
   },
   "signatureAlgorithm": "ed25519",
-  "signature": "Yegojx0X5uGCUuH0Ud+do88eRVC6WGpSiYEAiO3Gi3iZozVFu4zlgEwn1Kw8ameKRVuMJiMRsv3q3a7qpZrDDg=="
+  "signature": "Elk6Uu7FC/w4RTXZ3hoc1oEjj2caCprsmH6fEHS9i3bMsxv1fw+eLOlgXxsugJwhHzAd2rvLLHQrkPwa/aBDDQ=="
 }
