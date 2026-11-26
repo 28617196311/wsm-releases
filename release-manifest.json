@@ -1,18 +1,22 @@
 {
-  "version": "2.4.1",
-  "releasedAt": "2026-11-24T04:36:30.011Z",
+  "version": "2.15.0",
+  "releasedAt": "2026-11-26T08:55:02.807Z",
   "changelog": [
-    "修复「同步与关于」弹窗过长导致右上角关闭按钮被顶出界面的问题：弹窗高度限制在视口内，标题和关闭按钮固定，只有内容区滚动",
-    "云端快照默认按每个仓库只展示最近 3 份，旧的 7 份仍保留，可点「展开全部」查看；快照列表自身限高并在内部滚动，页面不再被撑长",
-    "版本升至 2.4.1；本次为界面补丁，typecheck、lint、75 项 Node 单测、37 项完整 E2E 与打包态 smoke 全部通过"
+    "打包版新增启动强制更新门禁：每次启动都先读取签名更新清单，确认本机版本不低于线上最新版后才创建主界面",
+    "发现新版本时自动下载完整安装包并静默覆盖安装，下载和安装期间显示进度界面，不进入仓库、领料或系统管理页面",
+    "更新检查失败、下载失败或安装启动失败时停留在更新界面，提供重新检查和退出软件入口；无法确认最新版本时不允许继续使用",
+    "更新门禁只作用于打包版；开发态和 WSM_E2E=1 自动化测试跳过，避免开发与测试被远端清单阻塞",
+    "更新完成后仍沿用原有签名清单、SHA-256 和安装包大小校验，不信任未签名清单；安装包继续使用 NSIS 覆盖安装，不清空本机仓库数据",
+    "2.14.0 升级到 2.15.0 仍需一次手动安装或从系统管理端点击一次检查更新；2.15.0 之后每次启动都由门禁自动检查和安装，不再需要点击更新按钮",
+    "版本升至 2.15.0；已完成 typecheck、lint、单元测试、E2E 和 Electron 安装包构建，安装包未签名"
   ],
   "installer": {
-    "fileName": "仓库货架管理 Setup 2.4.1.exe",
-    "size": 121817288,
-    "sha256": "b7c6e27b8e23e8ae9c214a593104a52cc0c82957457ac9651994f77abfd29b90",
+    "fileName": "仓库货架管理 Setup 2.15.0.exe",
+    "size": 121895313,
+    "sha256": "90111ed9d052991d668bf5bc80d30e0914417670468040c7b75dd3ebbf457ddb",
     "mode": "github",
-    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.4.1/warehouse-shelf-manager-setup-2.4.1.exe"
+    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.15.0/warehouse-shelf-manager-setup-2.15.0.exe"
   },
   "signatureAlgorithm": "ed25519",
-  "signature": "y7jjVzHXXCUB532ARL3UGMOG+LdfpD08MqkQivNv7NPaFfbxHfkRDO+2Akk0MMd+AAbW0oIDG2xj0/gzH+ReBA=="
+  "signature": "Ur39+dBXUUYy6LptuwAC0kbXA/O3VM29xXRifKKM2m9CUaDdlirDj8jRvAMC3U+MLqOZsWxAqNegpAFeh3kTAA=="
 }
