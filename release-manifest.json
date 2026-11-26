@@ -1,22 +1,19 @@
 {
-  "version": "2.15.0",
-  "releasedAt": "2026-11-26T09:04:28.234Z",
+  "version": "2.15.1",
+  "releasedAt": "2026-11-26T09:16:26.041Z",
   "changelog": [
-    "打包版新增启动强制更新门禁：每次启动都先读取签名更新清单，确认本机版本不低于线上最新版后才创建主界面",
-    "发现新版本时自动下载完整安装包并静默覆盖安装，下载和安装期间显示进度界面，不进入仓库、领料或系统管理页面",
-    "更新检查失败、下载失败或安装启动失败时停留在更新界面，提供重新检查和退出软件入口；无法确认最新版本时不允许继续使用",
-    "更新门禁只作用于打包版；开发态和 WSM_E2E=1 自动化测试跳过，避免开发与测试被远端清单阻塞",
-    "更新完成后仍沿用原有签名清单、SHA-256 和安装包大小校验，不信任未签名清单；安装包继续使用 NSIS 覆盖安装，不清空本机仓库数据",
-    "2.14.0 升级到 2.15.0 仍需一次手动安装或从系统管理端点击一次检查更新；2.15.0 之后每次启动都由门禁自动检查和安装，不再需要点击更新按钮",
-    "版本升至 2.15.0；已完成 typecheck、lint、单元测试、E2E 和 Electron 安装包构建，安装包未签名"
+    "修复启动更新门禁的窗口生命周期：确认已是最新版本后先创建主窗口再关闭更新页，避免主界面尚未创建时触发窗口全部关闭而直接退出应用",
+    "更新安装包下载新增 api.github.com 资产接口备用通道：github.com 直链被网络拦截时自动改用 GitHub API 资产地址，仍逐跳校验官方域名并核对大小与 SHA-256",
+    "版本升至 2.15.1；单元测试 83/83、typecheck、lint 通过，重新构建并发布更新清单与安装包"
   ],
   "installer": {
-    "fileName": "仓库货架管理 Setup 2.15.0.exe",
-    "size": 121895324,
-    "sha256": "e7eb774deb21c43baae0280424f1c2a596e2c8186114d769e25685963f832099",
+    "fileName": "仓库货架管理 Setup 2.15.1.exe",
+    "size": 121895611,
+    "sha256": "a66265490146456a880a2b7e245ec9d2ed67f2beac9c9b737513dd28077fef83",
     "mode": "github",
-    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.15.0/warehouse-shelf-manager-setup-2.15.0.exe"
+    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.15.1/warehouse-shelf-manager-setup-2.15.1.exe",
+    "apiUrl": "https://api.github.com/repos/28617196311/wsm-releases/releases/assets/795109787"
   },
   "signatureAlgorithm": "ed25519",
-  "signature": "TNygI+Os0FS8xYpm15tYS+V2x+TVAxZk5ZZmS6E8ZIsyHQERh6JzJH0kVv6Ilkd9PHjArXaXvf9TUWtvYhy+Aw=="
+  "signature": "gRXBjqsiOucTf+ZuFCJj4X5Ae97f7T2fW6j8jzmU/PB550IS78ZSuC1BG/F8d4diObVe6Jr6H7NEhuea19/AAQ=="
 }
