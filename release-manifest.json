@@ -1,6 +1,6 @@
 {
   "version": "2.15.0",
-  "releasedAt": "2026-11-26T08:55:02.807Z",
+  "releasedAt": "2026-11-26T09:04:28.234Z",
   "changelog": [
     "打包版新增启动强制更新门禁：每次启动都先读取签名更新清单，确认本机版本不低于线上最新版后才创建主界面",
     "发现新版本时自动下载完整安装包并静默覆盖安装，下载和安装期间显示进度界面，不进入仓库、领料或系统管理页面",
@@ -12,11 +12,11 @@
   ],
   "installer": {
     "fileName": "仓库货架管理 Setup 2.15.0.exe",
-    "size": 121895313,
-    "sha256": "90111ed9d052991d668bf5bc80d30e0914417670468040c7b75dd3ebbf457ddb",
+    "size": 121895324,
+    "sha256": "e7eb774deb21c43baae0280424f1c2a596e2c8186114d769e25685963f832099",
     "mode": "github",
     "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.15.0/warehouse-shelf-manager-setup-2.15.0.exe"
   },
   "signatureAlgorithm": "ed25519",
-  "signature": "Ur39+dBXUUYy6LptuwAC0kbXA/O3VM29xXRifKKM2m9CUaDdlirDj8jRvAMC3U+MLqOZsWxAqNegpAFeh3kTAA=="
+  "signature": "TNygI+Os0FS8xYpm15tYS+V2x+TVAxZk5ZZmS6E8ZIsyHQERh6JzJH0kVv6Ilkd9PHjArXaXvf9TUWtvYhy+Aw=="
 }
