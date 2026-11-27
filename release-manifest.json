@@ -1,26 +1,29 @@
 {
-  "version": "2.18.1",
-  "releasedAt": "2026-11-27T03:33:05.597Z",
+  "version": "2.20.1",
+  "releasedAt": "2026-11-27T07:15:29.593Z",
   "changelog": [
-    "更新清单改为 raw.githubusercontent.com、api.github.com、github.com/raw 三源并发读取，每个源最多等 8 秒；任一源通过 Ed25519 验签就立即使用，不再按顺序串行等待",
-    "安装包下载前并发探测官方直链、GitHub 加速镜像和 API 资产接口，各读取前 256 KB 测速，优先使用最快可用的源；探测失败的线路直接跳过",
-    "下载过程增加 30 秒无进度自动切换线路、Range 断点续传和同哈希临时文件复用；换源不再从 0 重下，安装前仍强制核对清单大小与 SHA-256",
-    "更新页新增“正在选择最快下载源”状态，并显示当前下载源、实时速度和剩余时间；系统管理端的更新进度同步展示这些信息",
-    "版本升至 2.18.1；仅优化更新器，不改变仓库、领料、手机端和云端数据逻辑；typecheck、lint、移动端与桌面端构建、Electron 安装包构建均已通过"
+    "修复领料看板把待退/处理中退料提前冲减净领用的问题：现在只有仓管确认的已退料单才按实退数量计入退料量和净领用，待确认退料只显示单据数",
+    "入库拆筐支持同一现有物料加入多行：搜索列表可再次加入，明细行可“再加一筐”，系统自动避开已占用目标筐；数据层会阻止两行写回同一仓位，避免看起来拆筐实际没拆",
+    "调拨冲销收紧旧单校验：旧版调拨入库单缺少来源流水标识时直接阻止冲销；按行号严格对应来源出库行，多行缺行号不再猜测，并校验本次回补不超过原出库数量",
+    "修复入库归档只按时间判断补推的问题：先比较红冲状态优先级，再比较时间；同时间但内容不同也会补推，保证本机已冲销状态能同步到云端和其他设备",
+    "领料单合并增加状态优先级：已发料/已退料不会被时钟更晚的旧“部分发料/拒绝/取消”缓存覆盖，减少多机时钟偏差导致的单据回滚",
+    "修复入库归档行号使用当前数组序号的问题：冲销按归档原行号写回，流水行缺失或乱序时也能与来源调拨行一一对应",
+    "更新两条过期 E2E 用例：管理员重启后会自动弹出仓库管理员登录框，切系统管理员前先取消弹窗；新增退料统计与终态合并单元测试，并修正统计测试的运行时导入入口，当前 87 项单测全部通过",
+    "版本升至 2.20.1；typecheck、lint、87 项单元测试和完整 Playwright E2E（43 项）、桌面/手机/Electron 构建均通过"
   ],
   "installer": {
-    "fileName": "仓库货架管理 Setup 2.18.1.exe",
-    "size": 121968390,
-    "sha256": "1b4d11a0503c3f08017a4dde40af4e6105a328bad208ae21e0b352bf1db3ed7b",
+    "fileName": "仓库货架管理 Setup 2.20.1.exe",
+    "size": 122040341,
+    "sha256": "645d195d08489adbe0c8a333fd671d9b3ff97d36bf1a79783c25d5b8b18a51b1",
     "mode": "github",
-    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.18.1/warehouse-shelf-manager-setup-2.18.1.exe",
-    "apiUrl": "https://api.github.com/repos/28617196311/wsm-releases/releases/assets/798810648",
+    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.20.1/warehouse-shelf-manager-setup-2.20.1.exe",
+    "apiUrl": "https://api.github.com/repos/28617196311/wsm-releases/releases/assets/799398801",
     "mirrors": [
-      "https://gh-proxy.com/https://github.com/28617196311/wsm-releases/releases/download/v2.18.1/warehouse-shelf-manager-setup-2.18.1.exe",
-      "https://ghfast.top/https://github.com/28617196311/wsm-releases/releases/download/v2.18.1/warehouse-shelf-manager-setup-2.18.1.exe",
-      "https://ghproxy.net/https://github.com/28617196311/wsm-releases/releases/download/v2.18.1/warehouse-shelf-manager-setup-2.18.1.exe"
+      "https://gh-proxy.com/https://github.com/28617196311/wsm-releases/releases/download/v2.20.1/warehouse-shelf-manager-setup-2.20.1.exe",
+      "https://ghfast.top/https://github.com/28617196311/wsm-releases/releases/download/v2.20.1/warehouse-shelf-manager-setup-2.20.1.exe",
+      "https://ghproxy.net/https://github.com/28617196311/wsm-releases/releases/download/v2.20.1/warehouse-shelf-manager-setup-2.20.1.exe"
     ]
   },
   "signatureAlgorithm": "ed25519",
-  "signature": "jS1LOangMzI96FXBj8BoZW2OBmKh8HxRbxFf+VAuxxzFLZKqk6OJfbpW+hYdISl1D96/EhDY7qgTIhz5i6XrCg=="
+  "signature": "/GFPcqKTULvYZd5xwliIYVt6pp07dKx87nFUJX04cpU9bdNnoSd/pOVAyY921aneridU+Ft6sRD7CiDj9cmLAA=="
 }
