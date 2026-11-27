@@ -1,27 +1,26 @@
 {
-  "version": "2.18.0",
-  "releasedAt": "2026-11-27T02:57:34.611Z",
+  "version": "2.18.1",
+  "releasedAt": "2026-11-27T03:33:05.597Z",
   "changelog": [
-    "新增领料员手机端（手机网页 / PWA）：桌面端同步中枢直接提供 /mobile/ 入口，并生成含令牌的二维码；手机扫码或手动填地址后即可选仓、搜索物料、加入领料清单、填需求时间和用途、提交领料单",
-    "手机端复用桌面领料规则：包/散数量、待发料占用、可用库存校验、单号生成、需求时间默认当天 23:59、历史单再来一单和本人待发料撤回；提交前重新读取货架和领料单，并用 CAS 冲突重试，降低手机旧画面超领风险",
-    "手机端提供我的记录、状态筛选、详情时间线、草稿自动保存、领料人资料、连接测试和添加到主屏幕入口；业务数据直连同步中枢，不依赖 GitHub 直连，弱网时保留本机记录缓存",
-    "同步中枢新增手机静态页服务：公开提供 /mobile/ 页面、manifest、Service Worker 和图标，记录 API 仍强制 Bearer 令牌鉴权；补充 CORS 与 OPTIONS，手机浏览器可跨源访问记录 API，静态页在鉴权前放行",
-    "手机端搜索框兼容蓝牙扫码枪输入物料编码/名称/规格/仓位，也支持手动输入；摄像头扫码需要 HTTPS 安全上下文，当前 HTTP 局域网入口不启用",
-    "版本升至 2.18.0；已完成 typecheck、lint、手机端生产构建、同步中枢静态服务与 CORS/CAS 实测、桌面端渲染构建和 Electron 安装包构建"
+    "更新清单改为 raw.githubusercontent.com、api.github.com、github.com/raw 三源并发读取，每个源最多等 8 秒；任一源通过 Ed25519 验签就立即使用，不再按顺序串行等待",
+    "安装包下载前并发探测官方直链、GitHub 加速镜像和 API 资产接口，各读取前 256 KB 测速，优先使用最快可用的源；探测失败的线路直接跳过",
+    "下载过程增加 30 秒无进度自动切换线路、Range 断点续传和同哈希临时文件复用；换源不再从 0 重下，安装前仍强制核对清单大小与 SHA-256",
+    "更新页新增“正在选择最快下载源”状态，并显示当前下载源、实时速度和剩余时间；系统管理端的更新进度同步展示这些信息",
+    "版本升至 2.18.1；仅优化更新器，不改变仓库、领料、手机端和云端数据逻辑；typecheck、lint、移动端与桌面端构建、Electron 安装包构建均已通过"
   ],
   "installer": {
-    "fileName": "仓库货架管理 Setup 2.18.0.exe",
-    "size": 121965600,
-    "sha256": "bb6555942da2dce027d9391523e1dfe5d12824b62bb2a0ba219675b17154bc59",
+    "fileName": "仓库货架管理 Setup 2.18.1.exe",
+    "size": 121968390,
+    "sha256": "1b4d11a0503c3f08017a4dde40af4e6105a328bad208ae21e0b352bf1db3ed7b",
     "mode": "github",
-    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.18.0/warehouse-shelf-manager-setup-2.18.0.exe",
-    "apiUrl": "https://api.github.com/repos/28617196311/wsm-releases/releases/assets/798708186",
+    "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.18.1/warehouse-shelf-manager-setup-2.18.1.exe",
+    "apiUrl": "https://api.github.com/repos/28617196311/wsm-releases/releases/assets/798810648",
     "mirrors": [
-      "https://gh-proxy.com/https://github.com/28617196311/wsm-releases/releases/download/v2.18.0/warehouse-shelf-manager-setup-2.18.0.exe",
-      "https://ghfast.top/https://github.com/28617196311/wsm-releases/releases/download/v2.18.0/warehouse-shelf-manager-setup-2.18.0.exe",
-      "https://ghproxy.net/https://github.com/28617196311/wsm-releases/releases/download/v2.18.0/warehouse-shelf-manager-setup-2.18.0.exe"
+      "https://gh-proxy.com/https://github.com/28617196311/wsm-releases/releases/download/v2.18.1/warehouse-shelf-manager-setup-2.18.1.exe",
+      "https://ghfast.top/https://github.com/28617196311/wsm-releases/releases/download/v2.18.1/warehouse-shelf-manager-setup-2.18.1.exe",
+      "https://ghproxy.net/https://github.com/28617196311/wsm-releases/releases/download/v2.18.1/warehouse-shelf-manager-setup-2.18.1.exe"
     ]
   },
   "signatureAlgorithm": "ed25519",
-  "signature": "rZFQU8+zNcLLQiB+GA3pCDzNu2ZRmi4kTnHmOpoJ6bdAafQIdQ5cgs7/RSM2KGmSu1JstpoqR6FUi2Lx0mjkCA=="
+  "signature": "jS1LOangMzI96FXBj8BoZW2OBmKh8HxRbxFf+VAuxxzFLZKqk6OJfbpW+hYdISl1D96/EhDY7qgTIhz5i6XrCg=="
 }
