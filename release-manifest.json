@@ -1,6 +1,6 @@
 {
   "version": "2.18.0",
-  "releasedAt": "2026-11-27T02:48:07.728Z",
+  "releasedAt": "2026-11-27T02:57:34.611Z",
   "changelog": [
     "新增领料员手机端（手机网页 / PWA）：桌面端同步中枢直接提供 /mobile/ 入口，并生成含令牌的二维码；手机扫码或手动填地址后即可选仓、搜索物料、加入领料清单、填需求时间和用途、提交领料单",
     "手机端复用桌面领料规则：包/散数量、待发料占用、可用库存校验、单号生成、需求时间默认当天 23:59、历史单再来一单和本人待发料撤回；提交前重新读取货架和领料单，并用 CAS 冲突重试，降低手机旧画面超领风险",
@@ -11,11 +11,11 @@
   ],
   "installer": {
     "fileName": "仓库货架管理 Setup 2.18.0.exe",
-    "size": 121965616,
-    "sha256": "e3b85758435058203dcde499f4ab1f523772a2fe72cff454c9a2a887de3ced23",
+    "size": 121965600,
+    "sha256": "bb6555942da2dce027d9391523e1dfe5d12824b62bb2a0ba219675b17154bc59",
     "mode": "github",
     "downloadUrl": "https://github.com/28617196311/wsm-releases/releases/download/v2.18.0/warehouse-shelf-manager-setup-2.18.0.exe",
-    "apiUrl": "https://api.github.com/repos/28617196311/wsm-releases/releases/assets/798680223",
+    "apiUrl": "https://api.github.com/repos/28617196311/wsm-releases/releases/assets/798708186",
     "mirrors": [
       "https://gh-proxy.com/https://github.com/28617196311/wsm-releases/releases/download/v2.18.0/warehouse-shelf-manager-setup-2.18.0.exe",
       "https://ghfast.top/https://github.com/28617196311/wsm-releases/releases/download/v2.18.0/warehouse-shelf-manager-setup-2.18.0.exe",
@@ -23,5 +23,5 @@
     ]
   },
   "signatureAlgorithm": "ed25519",
-  "signature": "z4RgHOJBpnyf3hdBPt9WTnqOfzqgBI/54WUKLe8JtcKQc4QD+gTqbvLIdoUOJBh1AsUOIZeMsxuR2+UfFOyzAQ=="
+  "signature": "rZFQU8+zNcLLQiB+GA3pCDzNu2ZRmi4kTnHmOpoJ6bdAafQIdQ5cgs7/RSM2KGmSu1JstpoqR6FUi2Lx0mjkCA=="
 }
